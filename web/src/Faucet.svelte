@@ -9,7 +9,7 @@
     account: '0x0000000000000000000000000000000000000000',
     network: 'testnet',
     payout: 1,
-    symbol: 'ETH',
+    symbol: 'tDMD',
     hcaptcha_sitekey: '',
   };
 
@@ -118,32 +118,14 @@
 </svelte:head>
 
 <main>
-  <section class="hero is-info is-fullheight">
+  <section class="hero is-fullheight">
     <div class="hero-head">
       <nav class="navbar">
-        <div class="container">
+        <div class="container px-5 py-2">
           <div class="navbar-brand">
-            <a class="navbar-item" href="../..">
-              <span class="icon">
-                <i class="fa fa-bath" />
-              </span>
-              <span><b>{faucetInfo.symbol} Faucet</b></span>
+            <a href="../.." class="logo">
+              <img src="/logo_dmd_full.svg" alt="DMD Logo" width="174"/>
             </a>
-          </div>
-          <div id="navbarMenu" class="navbar-menu">
-            <div class="navbar-end">
-              <span class="navbar-item">
-                <a
-                  class="button is-white is-outlined"
-                  href="https://github.com/chainflag/eth-faucet"
-                >
-                  <span class="icon">
-                    <i class="fa fa-github" />
-                  </span>
-                  <span>View Source</span>
-                </a>
-              </span>
-            </div>
           </div>
         </div>
       </nav>
@@ -151,7 +133,7 @@
 
     <div class="hero-body">
       <div class="container has-text-centered">
-        <div class="column is-6 is-offset-3">
+        <div class="column holder">
           <h1 class="title">
             Receive {faucetInfo.payout}
             {faucetInfo.symbol} per request
@@ -173,7 +155,7 @@
               <p class="control">
                 <button
                   on:click={handleRequest}
-                  class="button is-primary is-rounded"
+                  class="button is-primary is-rounded custom-button"
                 >
                   Request
                 </button>
@@ -187,18 +169,33 @@
 </main>
 
 <style>
-  .hero.is-info {
-    background:
-      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-      url('/background.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  .holder {
+    max-width: 700px;
+    margin: 0 auto;
   }
-  .hero .subtitle {
-    padding: 3rem 0;
-    line-height: 1.5;
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: bold;
+    color: var(--cobalt);
+  }
+  .custom-button {
+    background-color: var(--saphire);
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  .custom-button:hover {
+    background-color: var(--cobalt);
+  }
+  .input {
+    border-radius: 8px;
+  }
+  .input:focus {
+    border-color: var(--saphire);
+  }
+  .title {
+    font-weight: bold;
   }
   .box {
     border-radius: 19px;
