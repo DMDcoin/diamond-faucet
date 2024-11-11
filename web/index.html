@@ -5,9 +5,60 @@
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + Svelte</title>
+
+    <style>
+      :root {
+        --saphire: #030A49;
+        --cobalt: #0145B2;
+        --summerSky: #27B7ED;
+        --turquoise: #58C6EB;
+        --darkGray: #353B3E;
+        --white: #FFFFFF;
+      }
+
+      body {
+        font-family: 'Arial', sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--darkGray);
+        background-image: url('/bg-grid.png');
+        background-position: 0 0;
+        background-size: 162px;
+      }
+      .body-glow {
+        z-index: -2;
+        opacity: 0.5;
+        filter: blur(100px);
+        background-color: #0145b2;
+        border-radius: 300px;
+        width: 300px;
+        height: 300px;
+        position: fixed;
+        top: 0;
+        bottom: auto;
+        left: 0;
+        right: auto;
+      }
+      #app{
+        z-index: 1;
+        position: relative;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
+    <div class="body-glow"></div>
   </body>
 </html>
+
+<script>
+  const floatingDiv = document.querySelector('.body-glow');
+  const divWidth = floatingDiv.offsetWidth;
+  const divHeight = floatingDiv.offsetHeight;
+  document.addEventListener('mousemove', (event) => {
+    const { clientX: mouseX, clientY: mouseY } = event;
+    floatingDiv.style.left = `${mouseX - divWidth / 2}px`;
+    floatingDiv.style.top = `${mouseY - divHeight / 2}px`;
+  });
+</script>
