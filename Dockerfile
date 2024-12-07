@@ -30,4 +30,4 @@ COPY --from=backend /backend-build/eth-faucet /app/eth-faucet
 
 EXPOSE 8080
 
-ENTRYPOINT ["/app/eth-faucet"]
+ENTRYPOINT ["/app/eth-faucet", "-faucet.symbol", "tDMD",  "-faucet.amount", "0.001", "-faucet.name", "DMD Diamond V4 Beta Network"]
